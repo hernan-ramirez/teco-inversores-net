@@ -1,0 +1,21 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Archivos desde SharePoint";
+}
+
+<div class="text-center">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="http://loripsum.net/" target="_blank">Memini me adesse P.</a> Immo alio genere; Illud dico, ea, quae dicat, praeclare inter se cohaerere. Ego quoque, inquit, didicerim libentius si quid attuleris, quam te reprehenderim. </p>
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <p><i>Duo Reges: constructio interrete.</i> Sed tamen est aliquid, quod nobis non liceat, liceat illis. <i>Sequitur disserendi ratio cognitioque naturae;</i> Sed mehercule pergrata mihi oratio tua. Nunc haec primum fortasse audientis servire debemus. At iste non dolendi status non vocatur voluptas. Ita relinquet duas, de quibus etiam atque etiam consideret. </p>
+
+    <ol class="rounded-list">
+    @foreach (var item in @Model.graphResult) {    
+        object downloadUrl = null;
+        item.AdditionalData?.TryGetValue(@"@microsoft.graph.downloadUrl", out downloadUrl);    
+        <li>
+            <a href="@downloadUrl">@item.Name</a>
+        </li>
+    }
+    </ol>
+</div>
